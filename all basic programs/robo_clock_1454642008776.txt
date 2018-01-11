@@ -1,0 +1,28 @@
+#include<avr/io.h>
+#define F_CPU 16000000
+#include<util/delay.h>
+#include<i3indya/lcd16.h>
+void main()
+{
+lcd_init(); //to initialize the LCD
+unsigned char hr,min,sec;
+while(1)
+{
+for(hr=0;hr<24;hr++)
+for(min=0;min<60;min++)
+for(sec=0;sec<60;sec++)
+{
+lcd_gotoxy(4,0);
+lcd_printnum(hr);
+lcd_gotoxy(5,0);
+lcd_printc(":");
+lcd_gotoxy(7,0);
+lcd_printnum(min);
+lcd_gotoxy(8,0);
+lcd_printc(":");
+lcd_gotoxy(10,0);
+lcd_printnum(sec);
+_delay_ms(999);
+}
+}
+}

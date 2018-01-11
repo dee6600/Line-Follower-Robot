@@ -1,0 +1,20 @@
+#include <avr/io.h>
+#define F_CPU 16000000
+#include<util/delay.h>
+#include<i3indya/lcd16.h>
+void main()
+{
+DDRB=0x0f; 
+lcd_init(); //to initialize the LCD
+while(1)
+{
+PORTB=0b00001001;
+lcd_gotoxy(3,0);
+lcd_printc(" FORWARD");
+_delay_ms(2000);
+PORTB=0b00000110;
+lcd_gotoxy(3,0);
+lcd_printc("BACKWARD");
+_delay_ms(2000);
+}
+}
